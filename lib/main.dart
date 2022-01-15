@@ -44,24 +44,19 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  Get.toNamed(RoutePage.LINE_SCREEN);
+                  Get.toNamed(RoutePage.FL_LINE_CHART);
                 },
-                child: Text("라인")),
+                child: Text("FL_LINE_CHART")),
             ElevatedButton(
                 onPressed: () {
-                  Get.toNamed(RoutePage.PIE_SCREEN);
+                  Get.toNamed(RoutePage.TIME_CHART);
                 },
-                child: Text("파이")),
+                child: Text("TIME_CHART")),
             ElevatedButton(
                 onPressed: () {
-                  Get.toNamed(RoutePage.LINE_CHART_SCREEN);
+                  Get.toNamed(RoutePage.ZOOM);
                 },
-                child: Text("라인차트")),
-            ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(RoutePage.EXAM);
-                },
-                child: Text("예제")),
+                child: Text("ZOOM")),
           ],
         ),
       ),

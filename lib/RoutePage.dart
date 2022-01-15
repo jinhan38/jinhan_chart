@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
 import 'package:jinhan_chart/exam/RectsExample.dart';
-import 'package:jinhan_chart/paint/line.dart';
-import 'package:jinhan_chart/screen/line_chart_screen.dart';
-import 'package:jinhan_chart/screen/line_screen.dart';
-import 'package:jinhan_chart/screen/pie_screen.dart';
+import 'package:jinhan_chart/fl_line_chart/fl_line_chart.dart';
+import 'package:jinhan_chart/time_chart/time_chart_screen.dart';
+import 'package:jinhan_chart/zoom/ZoomScreen.dart';
 
 import 'main.dart';
 
@@ -19,6 +18,9 @@ class RoutePage {
   static const String PIE_SCREEN = "/pieScreen";
   static const String LINE_CHART_SCREEN = "/lineChartScreen";
   static const String EXAM = "/exam";
+  static const String FL_LINE_CHART = "/flLineChart";
+  static const String TIME_CHART = "/timeChart";
+  static const String ZOOM = "/zoom";
 
   static final List<GetPage> getPageList = [
     GetPage(
@@ -26,20 +28,20 @@ class RoutePage {
       page: () => MyHomePage(),
     ),
     GetPage(
-      name: LINE_SCREEN,
-      page: () => LineScreen(),
-    ),
-    GetPage(
-      name: PIE_SCREEN,
-      page: () => PieScreen(),
-    ),
-    GetPage(
-      name: LINE_CHART_SCREEN,
-      page: () => LineChartScreen(),
-    ),
-    GetPage(
       name: EXAM,
       page: () => RectsExample(),
+    ),
+    GetPage(
+      name: FL_LINE_CHART,
+      page: () => FlLineChart(),
+    ),
+    GetPage(
+      name: TIME_CHART,
+      page: () => TimeChartScreen(),
+    ),
+    GetPage(
+      name: ZOOM,
+      page: () => ZoomScreen(),
     ),
   ];
 }
