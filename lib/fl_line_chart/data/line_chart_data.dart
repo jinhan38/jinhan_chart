@@ -103,6 +103,7 @@ class LineChartData extends AxisChartData with EquatableMixin {
   @override
   LineChartData lerp(BaseChartData a, BaseChartData b, double t) {
     if (a is LineChartData && b is LineChartData) {
+      print("fff : ${Color.lerp(a.backgroundColor, b.backgroundColor, t)}");
       return LineChartData(
         minX: lerpDouble(a.minX, b.minX, t),
         maxX: lerpDouble(a.maxX, b.maxX, t),

@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'fl_touch_event.dart';
 
-
 /// This class holds all data needed for [BaseChartPainter].
 ///
 /// In this phase we draw the border,
 /// and handle touches in an abstract way.
 abstract class BaseChartData with EquatableMixin {
-
   /// Holds data to drawing border around the chart.
   FlBorderData borderData;
 
@@ -29,10 +27,9 @@ abstract class BaseChartData with EquatableMixin {
   /// Used for equality check, see [EquatableMixin].
   @override
   List<Object?> get props => [
-    borderData,
-    touchData,
-  ];
-
+        borderData,
+        touchData,
+      ];
 }
 
 class FlBorderData with EquatableMixin {
@@ -48,11 +45,9 @@ class FlBorderData with EquatableMixin {
                 color: Colors.black, width: 1.0, style: BorderStyle.solid);
 
   ///두 점을 연결할 때 사용한다. 두 점을 보간한다
-  static FlBorderData lerp(FlBorderData a, FlBorderData b, double t){
+  static FlBorderData lerp(FlBorderData a, FlBorderData b, double t) {
     return FlBorderData(
-      show: b.show,
-      border:  Border.lerp(a.border, b.border, t)
-    );
+        show: b.show, border: Border.lerp(a.border, b.border, t));
   }
 
   ///FlBorderData 클래스가 동일한지 아닌지 체크
@@ -62,7 +57,6 @@ class FlBorderData with EquatableMixin {
         border,
       ];
 }
-
 
 /// Holds data to clipping chart around its borders.
 class FlClipData with EquatableMixin {
@@ -83,13 +77,16 @@ class FlClipData with EquatableMixin {
   FlClipData.all() : this(top: true, bottom: true, left: true, right: true);
 
   /// Creates data that clips only top and bottom side
-  FlClipData.vertical() : this(top: true, bottom: true, left: false, right: false);
+  FlClipData.vertical()
+      : this(top: true, bottom: true, left: false, right: false);
 
   /// Creates data that clips only left and right side
-  FlClipData.horizontal() : this(top: false, bottom: false, left: true, right: true);
+  FlClipData.horizontal()
+      : this(top: false, bottom: false, left: true, right: true);
 
   /// Creates data that doesn't clip any side
-  FlClipData.none() : this(top: false, bottom: false, left: false, right: false);
+  FlClipData.none()
+      : this(top: false, bottom: false, left: false, right: false);
 
   /// Checks whether any of the sides should be clipped
   bool get any => top || bottom || left || right;
@@ -115,8 +112,6 @@ class FlClipData with EquatableMixin {
   List<Object?> get props => [top, bottom, left, right];
 }
 
-
-
 /// Holds data to handle touch events, and touch responses in abstract way.
 ///
 /// There is a touch flow, explained [here](https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/handle_touches.md)
@@ -138,31 +133,31 @@ abstract class FlTouchData<R extends BaseTouchResponse> with EquatableMixin {
 
   /// You can disable or enable the touch system using [enabled] flag,
   FlTouchData(
-      bool enabled,
-      BaseTouchCallback<R>? touchCallback,
-      MouseCursorResolver<R>? mouseCursorResolver,
-      )   : enabled = enabled,
+    bool enabled,
+    BaseTouchCallback<R>? touchCallback,
+    MouseCursorResolver<R>? mouseCursorResolver,
+  )   : enabled = enabled,
         touchCallback = touchCallback,
         mouseCursorResolver = mouseCursorResolver;
 
   /// Used for equality check, see [EquatableMixin].
   @override
   List<Object?> get props => [
-    enabled,
-    touchCallback,
-    mouseCursorResolver,
-  ];
+        enabled,
+        touchCallback,
+        mouseCursorResolver,
+      ];
 }
 
-
 /// Chart's touch callback.
-typedef BaseTouchCallback<R extends BaseTouchResponse> = void Function(FlTouchEvent, R?);
+typedef BaseTouchCallback<R extends BaseTouchResponse> = void Function(
+    FlTouchEvent, R?);
 
 /// It gives you the happened [FlTouchEvent] and existed [R] data at the event's location,
 /// then you should provide a [MouseCursor] to change the cursor at the event's location.
 /// For example you can pass the [SystemMouseCursors.click] to change the mouse cursor to click.
-typedef MouseCursorResolver<R extends BaseTouchResponse> = MouseCursor Function(FlTouchEvent, R?);
-
+typedef MouseCursorResolver<R extends BaseTouchResponse> = MouseCursor Function(
+    FlTouchEvent, R?);
 
 /// This class holds the touch response details of charts.
 abstract class BaseTouchResponse {

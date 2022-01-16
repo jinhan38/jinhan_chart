@@ -36,8 +36,8 @@ class _LineChartSample2State extends State<LineChartSample2> {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Container(
-                width: 1000,
-                height: 500,
+                width: 650,
+                height: 650,
                 child: LineChart(
                   showAvg ? avgData() : mainData(),
                 ),
@@ -82,7 +82,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
         dotData: FlDotData(
           getDotPainter: (spot, percent, barData, index) {
             return FlDotCirclePainter(
-                radius: 2,
+                radius: 3,
                 color: const Color(0xff4af699),
                 strokeWidth: 1,
                 strokeColor: const Color(0xff4af699));
@@ -100,7 +100,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
           FlSpot(7, 5.3),
           FlSpot(8, 5.8),
           FlSpot(9, 6.2),
-          FlSpot(10, 22),
+          FlSpot(10, 7.3),
           FlSpot(11, 7.9),
         ],
       );
@@ -113,7 +113,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
         dotData: FlDotData(
           getDotPainter: (spot, percent, barData, index) {
             return FlDotCirclePainter(
-                radius: 2,
+                radius: 3,
                 color: const Color(0xffaa4cfc),
                 strokeWidth: 1,
                 strokeColor: const Color(0xffaa4cfc));
@@ -132,9 +132,9 @@ class _LineChartSample2State extends State<LineChartSample2> {
           FlSpot(6, 6),
           FlSpot(7, 7),
           FlSpot(8, 8),
-          FlSpot(9, 19),
-          FlSpot(10, 17),
-          FlSpot(11, 20),
+          FlSpot(9, 11),
+          FlSpot(10, 15),
+          FlSpot(11, 13),
         ],
       );
 
@@ -146,7 +146,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
         dotData: FlDotData(
           getDotPainter: (spot, percent, barData, index) {
             return FlDotCirclePainter(
-                radius: 2,
+                radius: 3,
                 color: Colors.blue,
                 strokeWidth: 1,
                 strokeColor: Colors.blue);
@@ -157,20 +157,23 @@ class _LineChartSample2State extends State<LineChartSample2> {
           FlSpot(0, 0),
           FlSpot(1, 2),
           FlSpot(2, 3.5),
-          FlSpot(3, 15),
-          FlSpot(4, 20),
-          FlSpot(5, 6),
-          FlSpot(6, 7.7),
-          FlSpot(7, 21),
+          FlSpot(3, 8),
+          FlSpot(4, 13),
+          FlSpot(5, 12),
+          FlSpot(6, 9.8),
+          FlSpot(7, 14),
           FlSpot(8, 16),
           FlSpot(9, 17),
-          FlSpot(10, 10.9),
-          FlSpot(11, 13),
+          FlSpot(10, 17),
+          FlSpot(11, 20),
         ],
       );
 
   LineChartData mainData() {
     return LineChartData(
+      // clipData: FlClipData(top: true, bottom: true, right: true, left: true),
+      backgroundColor: Colors.grey.shade400,
+      // backgroundColor: Color(0xff68737d),
       betweenBarsData: [
         BetweenBarsData(
           fromIndex: 0,
@@ -197,7 +200,8 @@ class _LineChartSample2State extends State<LineChartSample2> {
       ),
       titlesData: FlTitlesData(
         show: true,
-        rightTitles: SideTitles(showTitles: false),
+        rightTitles: SideTitles(showTitles: true,reservedSize: 8 ,
+        getTitles: (value) => ""),
         topTitles: SideTitles(showTitles: false),
         bottomTitles: SideTitles(
           showTitles: true,
@@ -206,32 +210,31 @@ class _LineChartSample2State extends State<LineChartSample2> {
           // getTextStyles: (context, value) =>
           // const TextStyle(color: Color(0xff68737d), fontWeight: FontWeight.bold, fontSize: 16),
           getTitles: (value) {
-            print("valuevalue : $value");
             switch (value.toInt()) {
               case 0:
-                return 'JAN';
+                return '1살';
               case 1:
-                return 'FEB';
+                return '2살';
               case 2:
-                return 'MAR';
+                return '3살';
               case 3:
-                return 'APR';
+                return '4살';
               case 4:
-                return 'MAY';
+                return '5살';
               case 5:
-                return 'JUN';
+                return '6살';
               case 6:
-                return 'JUL';
+                return '7살';
               case 7:
-                return 'AUG';
+                return '8살';
               case 8:
-                return 'SEP';
+                return '9살';
               case 9:
-                return 'OCT';
+                return '10살';
               case 10:
-                return 'NOV';
+                return '11살';
               case 11:
-                return 'DEC';
+                return '12살';
             }
             return '';
           },
@@ -298,7 +301,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
               case 24:
                 return '24';
               case 25:
-                return '25';
+                return '';
             }
             return '';
           },
